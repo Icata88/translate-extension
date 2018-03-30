@@ -1,0 +1,13 @@
+{
+	"manifest_version": 2,
+	"name": "Translate Extension",
+	"version": "0.1",
+	"browser_action": {
+		"default_title": "Open translate extension",
+		"default_popup": "popup.html",
+ 		"default_icon": "dict.png"
+	},	
+	"background": {
+		"scripts": ["background.js"]
+	}		
+}

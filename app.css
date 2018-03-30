@@ -1,0 +1,65 @@
+body {
+	margin: 20px;
+}
+
+.popup-overlay {
+	width: 500px;
+}
+
+#translated-text-wrap {
+    word-break: break-word;
+    background-color: #d6d9da;
+    padding: 8px 8px 50px;	
+}
+
+#translate-text {
+    font-family: arial,sans-serif;
+    font-size: 16px;
+    width: 100%;
+    padding: 8px 8px 50px;
+    margin: 0;
+    outline: none;
+    white-space: pre-wrap;
+    box-sizing: border-box;
+    overflow-y: hidden;
+    overflow-x: auto;
+    background-color: rgba(255,255,255,0);
+    resize: none;
+    display: inline-block;    
+    vertical-align: middle;
+}
+
+#translate-submit {
+	cursor: pointer;
+	display: block;
+	margin: 10px 0;
+	vertical-align: middle;
+	font-size: 14px;
+	padding: 6px 20px;
+	line-height: 22px;
+	text-align: center;
+	text-decoration: none;
+	transition: all 0.2s ease;
+	background-color: #00aeef;
+	color: #fff;
+	border: none;
+	max-width: 220px;	
+}
+
+#translate-submit:hover {
+	background-color: #2386B0;
+}
+
+#translated-text {
+	font-size: 18px;
+	margin: 0;
+}
+
+#translated-text.error {
+	color: #DA1E3F;
+}
+
+#select-translate-to {
+	padding: 10px;
+	margin-bottom: 10px;
+}

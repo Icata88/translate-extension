@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Translate extension</title>
+    <script src="popup.js"></script>
+    <link rel="stylesheet" type="text/css" href="app.css">
+  </head>
+  <body>
+      <div class='popup-overlay'>
+        <form id='translate-form'>
+          <select id='select-translate-to'></select>
+          <textarea id='translate-text' name='translate-text'></textarea>
+          <input type='submit' value='translate' id='translate-submit' />
+        </form>
+        <div id='translated-text-wrap'>
+          <p id='translated-text'></p>
+        </div>
+      </div>
+  </body>
+</html>
