@@ -4,12 +4,11 @@ const apiKey = 'AIzaSyCLcSvC6VhTwp4pNelp7_aA8Cm-thAXpiQ';
 
 chrome.runtime.onMessage.addListener(	
 	function(request, sender, sendResponse) {
-		if (request.method === 'setContent') {
+		if (request.method === 'getContent') {
 			let data = request.data;
 			let selectTo = request.selectTo;
-			setTranslatedText(data, selectTo, () => {
-				// get the translated text from the local storage of the extension and send it back to content script
-				sendResponse(getTranslatedText());
+			getTranslatedText(data, selectTo).then(response => {
+				sendResponse(response);
 			});
 		} else if (request.method === 'getLangCodes') {
 			setGoogleLangCodes(() => {
@@ -38,22 +37,11 @@ let getGoogleLangCodes = () => {
 	return response;
 }
 
-let setTranslatedText = (data, selectTo, callback) => {
-	fetch(`${hostUrl}?text=${data}&to=${selectTo}`)
-	.then(res => res.json())
-	.catch(error => error)
-	.then(parsedRes => {
-		// set translated text in local storage of the extension
-		localStorage.setItem('translatedText', parsedRes);
-		if (typeof callback === 'function') {
-			callback();
-		}
-	});
+
+let getTranslatedText = (data, selectTo) => {
+	return	fetch(`${hostUrl}?text=${data}&to=${selectTo}`)
+			.then(res => {
+				return res.json();
+			})
+			.catch(error => error);
 }
-
-let getTranslatedText = () => {
-	let translatedText = localStorage.getItem('translatedText');
-	return translatedText;
-}
-
-

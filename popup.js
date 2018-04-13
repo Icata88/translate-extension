@@ -4,7 +4,7 @@ let translateText = (e) => {
 	let inputText = document.getElementById('translate-text').value;
 	let translateTo = document.getElementById('select-translate-to').value;
 
-    callEventPageMethod('setContent', inputText, translateTo, response => {
+    callEventPageMethod('getContent', inputText, translateTo, response => {
         document.getElementById('translated-text').innerHTML = response;	
     });	
 
