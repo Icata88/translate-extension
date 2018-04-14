@@ -40,9 +40,7 @@ let getGoogleLangCodes = () => {
 
 let getTranslatedText = (data, selectTo, callback) => {
 	return	fetch(`${hostUrl}?text=${data}&to=${selectTo}`)
-			.then(res => {
-				return res.json();
-			})
+			.then(res => res.json())
 			.catch(error => error)
 			.then(parsedRes => {
 				if (typeof callback === 'function') {
