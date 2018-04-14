@@ -7,8 +7,8 @@ chrome.runtime.onMessage.addListener(
 		if (request.method === 'getContent') {
 			let data = request.data;
 			let selectTo = request.selectTo;
-			getTranslatedText(data, selectTo).then(response => {
-				sendResponse(response);
+			getTranslatedText(data, selectTo, (res) => {
+				sendResponse(res);
 			});
 		} else if (request.method === 'getLangCodes') {
 			setGoogleLangCodes(() => {
@@ -38,10 +38,15 @@ let getGoogleLangCodes = () => {
 }
 
 
-let getTranslatedText = (data, selectTo) => {
+let getTranslatedText = (data, selectTo, callback) => {
 	return	fetch(`${hostUrl}?text=${data}&to=${selectTo}`)
 			.then(res => {
 				return res.json();
 			})
-			.catch(error => error);
+			.catch(error => error)
+			.then(parsedRes => {
+				if (typeof callback === 'function') {
+					callback(parsedRes);
+				}
+			});
 }
